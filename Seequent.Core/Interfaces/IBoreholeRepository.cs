@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Seequent.Core;
-public interface IBoreholeRepository
+public interface IBoreholeRepository : IRepository<Borehole>
 {
 }

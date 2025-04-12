@@ -13,7 +13,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         DbSet = context.Set<TEntity>();
     }
 
-    public virtual async Task<TEntity?> GetById(long id)
+    public async Task<TEntity?> GetById(long id)
     {
         return await DbSet.FindAsync(id);
     }

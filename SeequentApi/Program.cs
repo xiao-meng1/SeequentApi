@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Seequent.API;
+using Seequent.Core;
 using Seequent.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +13,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Services
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<BoreholeService>();
+builder.Services.AddScoped<BoreholeApplicationService>();
+
+// DbContext
 builder.Services.AddDbContext<SeequentDbContext>(options =>
 {
-    options.UseSqlServer(configuration.GetConnectionString("SeequentDbConnection"));
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
 var app = builder.Build();
 

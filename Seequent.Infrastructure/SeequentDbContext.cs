@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Seequent.Core;
 
 namespace Seequent.Infrastructure;
 
