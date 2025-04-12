@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Seequent.Infrastructure.Models;
+namespace Seequent.Infrastructure;
 
 [Table("Borehole")]
 public partial class Borehole

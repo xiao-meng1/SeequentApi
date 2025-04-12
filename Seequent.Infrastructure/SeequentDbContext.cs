@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Seequent.Infrastructure.Models;
+namespace Seequent.Infrastructure;
 
 public partial class SeequentDbContext : DbContext
 {

@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Seequent.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -7,6 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<SeequentDbContext>(options =>
+{
+    options.UseSqlServer(configuration.GetConnectionString("SeequentDbConnection"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
