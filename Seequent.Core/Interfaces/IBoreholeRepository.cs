@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 namespace Seequent.Core;
 public interface IBoreholeRepository : IRepository<Borehole>
 {
+    Task<IEnumerable<long>> GetAllIdsAsync();
+    Task<IEnumerable<Borehole>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax);
 }

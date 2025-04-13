@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Seequent.Core;
 public interface IRepository<TEntity> where TEntity : class
 {
-    Task<TEntity?> GetById(long id);
+    Task<TEntity?> GetByIdAsync(long id);
 
-    Task<IEnumerable<TEntity>> GetAll();
+    Task<IEnumerable<TEntity>> GetAllAsync();
+
+    Task<TEntity> Add(TEntity entity);
 }

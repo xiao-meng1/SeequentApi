@@ -16,13 +16,23 @@ public class BoreholeApplicationService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Borehole?> GetBorehole(long id)
+    public async Task<Borehole?> GetBoreholeAsync(long id)
     {
-        return await _unitOfWork.Boreholes.GetById(id);
+        return await _unitOfWork.Boreholes.GetByIdAsync(id);
     }
 
-    public async Task<IEnumerable<Borehole>> GetAllBoreholes()
+    public async Task<IEnumerable<long>> GetAllBoreholeIdsAsync()
     {
-        return await _unitOfWork.Boreholes.GetAll();
+        return await _unitOfWork.Boreholes.GetAllIdsAsync();
+    }
+
+    public async Task<IEnumerable<Borehole>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax)
+    {
+        return await _unitOfWork.Boreholes.GetBoreholeIdsAsync(xMin, xMax, yMin, yMax);
+    }
+
+    public async Task<Borehole> AddBorehole(Borehole borehole)
+    {
+        return await _unitOfWork.Boreholes.Add(borehole);
     }
 }

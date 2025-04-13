@@ -13,13 +13,20 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         DbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity?> GetById(long id)
+    public async Task<TEntity?> GetByIdAsync(long id)
     {
         return await DbSet.FindAsync(id);
     }
 
-    public async Task<IEnumerable<TEntity>> GetAll()
+    public async Task<IEnumerable<TEntity>> GetAllAsync()
     {
         return await DbSet.ToListAsync();
+    }
+
+    public async Task<TEntity> Add(TEntity entity)
+    {
+        var tracked = await DbSet.AddAsync(entity);
+        await Context.SaveChangesAsync();
+        return tracked.Entity;
     }
 }

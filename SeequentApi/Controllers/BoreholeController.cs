@@ -21,21 +21,37 @@ namespace SeequentApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Borehole>>> GetAll()
+        public async Task<ActionResult<List<long>>> GetAllIdsAsync()
         {
-            var borehole = await _boreholeService.GetAllBoreholes();
+            var borehole = await _boreholeService.GetAllBoreholeIdsAsync();
 
             return Ok(borehole);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Borehole>> GetById(long id)
+        public async Task<ActionResult<Borehole>> GetByIdAsync(long id)
         {
-            var borehole = await _boreholeService.GetBorehole(id);
+            var borehole = await _boreholeService.GetBoreholeAsync(id);
             if (borehole == null)
             {
                 return NotFound();
             }
+
+            return Ok(borehole);
+        }
+
+        [HttpGet("ids")]
+        public async Task<ActionResult<List<long>>> GetIdsAsync(int x1, int x2, int y1, int y2)
+        {
+            var borehole = await _boreholeService.GetBoreholeIdsAsync(x1, x2, y1, y2);
+
+            return Ok(borehole);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddBorehole(Borehole boreholeDto)
+        {
+            var borehole = await _boreholeService.AddBorehole(boreholeDto);
 
             return Ok(borehole);
         }
