@@ -24,7 +24,7 @@ public class BoreholeService
         return await _boreholeApplicationService.GetAllBoreholeIdsAsync();
     }
 
-    public async Task<IEnumerable<Borehole>> GetBoreholeIdsAsync(int x1, int x2, int y1, int y2)
+    public async Task<IEnumerable<long>> GetBoreholeIdsAsync(int x1, int x2, int y1, int y2)
     {
         var xMin = Math.Min(x1, x2);
         var xMax = Math.Max(x1, x2);

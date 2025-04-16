@@ -18,13 +18,14 @@ public class BoreholeRepository : Repository<Borehole>, IBoreholeRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Borehole>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax)
+    public async Task<IEnumerable<long>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax)
     {
         return await _context.Boreholes
             .Where(b => b.XLocationKm >= xMin &&
                         b.XLocationKm <= xMax &&
                         b.YLocationKm >= yMin &&
                         b.YLocationKm <= yMax)
+            .Select(x => x.Id)
             .ToListAsync();
     }
 }

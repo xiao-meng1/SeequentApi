@@ -6,7 +6,7 @@ using Seequent.Core;
 namespace SeequentApi.Controllers
 {
     [ApiController]
-    [Route("borehole")]
+    [Route("Borehole")]
     public class BoreholeController : ControllerBase
     {
         private readonly ILogger<BoreholeController> _logger;
@@ -20,7 +20,7 @@ namespace SeequentApi.Controllers
             _boreholeService = boreholeService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllIds")]
         public async Task<ActionResult<List<long>>> GetAllIdsAsync()
         {
             var borehole = await _boreholeService.GetAllBoreholeIdsAsync();
@@ -40,12 +40,12 @@ namespace SeequentApi.Controllers
             return Ok(borehole);
         }
 
-        [HttpGet("ids")]
+        [HttpGet("GetIds")]
         public async Task<ActionResult<List<long>>> GetIdsAsync(int x1, int x2, int y1, int y2)
         {
-            var borehole = await _boreholeService.GetBoreholeIdsAsync(x1, x2, y1, y2);
+            var boreholeIds = await _boreholeService.GetBoreholeIdsAsync(x1, x2, y1, y2);
 
-            return Ok(borehole);
+            return Ok(boreholeIds);
         }
 
         [HttpPost]

@@ -8,5 +8,5 @@ namespace Seequent.Core;
 public interface IBoreholeRepository : IRepository<Borehole>
 {
     Task<IEnumerable<long>> GetAllIdsAsync();
-    Task<IEnumerable<Borehole>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax);
+    Task<IEnumerable<long>> GetBoreholeIdsAsync(int xMin, int xMax, int yMin, int yMax);
 }
